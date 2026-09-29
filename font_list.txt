@@ -1,0 +1,55 @@
+# Turbine.UI.Lotro.Font enum (english client):
+#
+# import "Turbine.UI.Lotro"
+# for k, v in pairs(Turbine.UI.Lotro.Font) do
+#   Turbine.Engine.ScriptLog(k)
+# end
+
+Arial12
+BookAntiqua12
+BookAntiqua14
+BookAntiqua16
+BookAntiqua18
+BookAntiqua20
+BookAntiqua22
+BookAntiqua24
+BookAntiqua26
+BookAntiqua28
+BookAntiqua32
+BookAntiqua36
+BookAntiquaBold12
+BookAntiquaBold14
+BookAntiquaBold18
+BookAntiquaBold19
+BookAntiquaBold22
+BookAntiquaBold24
+FixedSys15
+LucidaConsole12
+TrajanPro13
+TrajanPro14
+TrajanPro15
+TrajanPro16
+TrajanPro18
+TrajanPro19
+TrajanPro20
+TrajanPro21
+TrajanPro23
+TrajanPro24
+TrajanPro25 -- DO NOT USE; causes a crash? --
+TrajanPro26
+TrajanPro28
+TrajanProBold16
+TrajanProBold22
+TrajanProBold24
+TrajanProBold25
+TrajanProBold30
+TrajanProBold36
+Verdana10
+Verdana12
+Verdana14
+Verdana16
+Verdana18
+Verdana20
+Verdana22
+Verdana23
+VerdanaBold16

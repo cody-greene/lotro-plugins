@@ -1,0 +1,10 @@
+-- German / Deutsch (de)
+HUD_SIZE = "HUD-Größe"
+HUD_SIZE_AUTO = "Automatisch"
+OPACITY = "Deckkraft"
+SHOW_PLAYER_MORALE_TEXT=" Spieler-Moralwert"
+SHOW_PLAYER_POWER = "Spielerstärke anzeigen"
+SHOW_PLAYER_POWER_TEXT=" Spieler-Kraftwert"
+SHOW_TARGET_MORALE_TEXT=" Ziel-Moralwert"
+SHOW_TARGET_POWER = "Zielstärke anzeigen"
+SHOW_TARGET_POWER_TEXT=" Ziel-Kraftwert"

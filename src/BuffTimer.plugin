@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<Plugin>
+  <Information>
+    <Name>BuffTimer</Name>
+    <Author>Anon</Author>
+    <Version>latest</Version>
+  </Information>
+  <Package>src.BuffTimer.main</Package>
+</Plugin>
