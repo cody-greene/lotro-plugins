@@ -214,7 +214,7 @@ function HUD:change_target(target)
   end
   self.target = target
   self.target_morale:SetFill(get_morale_pct(target))
-  self.target_debuffs:update(target:GetEffects())
+  self.target_debuffs:update(target:GetEffects(), {})
   if self.target_morale_label then
     self.target_morale_label:SetText(get_morale_text(target))
   end

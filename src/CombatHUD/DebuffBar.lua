@@ -62,8 +62,13 @@ end
 
 -- @param effects {Turbine.Gameplay.EffectList}
 -- @param args.Index {number | nil} Position of the new effect, if any
+-- @param args.Effect {Effect | nil} The removed effect, if any
 function DebuffBar:update(effects, args)
-  local new_effect = args and args.Index and not args.Effect and effects:Get(args.Index)
+  local count = effects:GetCount()
+  -- Rarely, an effect is added and removed before before we can act on it so
+  -- we need to verify the index is within bounds.
+  local new_effect = args.Index and not args.Effect and count <= args.Index and effects:Get(args.Index)
+
   if new_effect then
     if new_effect:IsCurable() then
       local el = self.lights[new_effect:GetCategory()]
@@ -73,7 +78,7 @@ function DebuffBar:update(effects, args)
     -- If an effect was removed then we need to check the whole list. You might
     -- have another wound/etc remaining.
     local flagged = {}
-    for i = 1, effects:GetCount() do
+    for i = 1, count do
       local effect = effects:Get(i)
       local cat = effect:GetCategory()
       if effect:IsCurable() then
