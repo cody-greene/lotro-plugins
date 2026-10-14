@@ -18,7 +18,7 @@ local function get_power_text(actor)
   return string.format("%i/%i", actor:GetPower(), actor:GetBaseMaxPower())
 end
 
-local function get_wratch_text(actor)
+local function get_wrath_pct(actor)
   return string.format("%i/%i", actor:GetClassAttributes():GetWrath(), 100)
 end
 
