@@ -4,18 +4,20 @@ import "src.CombatHUD.DebuffBar"
 import "src.CombatHUD.VerticalFillbar"
 import "src.Common.EventManager"
 import "src.Common"
+import "src.CombatHUD.i18n"
 
+local format_int = src.CombatHUD.i18n.format_int
 local EventManager = src.Common.EventManager
 local class = src.Common.class
 local bind = src.Common.bind
 local LABEL_MARGIN = 5
 
 local function get_morale_text(actor)
-  return string.format("%i/%i", actor:GetMorale(), actor:GetBaseMaxMorale())
+  return string.format("%s/%s", format_int(actor:GetMorale()), format_int(actor:GetBaseMaxMorale()))
 end
 
 local function get_power_text(actor)
-  return string.format("%i/%i", actor:GetPower(), actor:GetBaseMaxPower())
+  return string.format("%s/%s", format_int(actor:GetPower()), format_int(actor:GetBaseMaxPower()))
 end
 
 local function get_wrath_pct(actor)
