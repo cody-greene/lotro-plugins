@@ -1,5 +1,6 @@
 HUD_SIZE = "HUD Size"
 HUD_SIZE_AUTO = "Auto"
+FONT_SIZE = "Font Size"
 OPACITY = "Opacity"
 SHOW_PLAYER_MORALE_TEXT=" Player morale value"
 SHOW_PLAYER_POWER = " Show player power"

@@ -1,6 +1,7 @@
 -- French / Français (fr)
 HUD_SIZE = "Taille du HUD"
 HUD_SIZE_AUTO = "Automatique"
+FONT_SIZE = "Taille de police"
 OPACITY = "Opacité"
 SHOW_PLAYER_MORALE_TEXT=" Valeur de moral du joueur"
 SHOW_PLAYER_POWER = " Afficher la puissance du joueur"

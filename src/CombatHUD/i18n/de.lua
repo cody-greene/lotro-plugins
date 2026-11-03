@@ -1,6 +1,7 @@
 -- German / Deutsch (de)
 HUD_SIZE = "HUD-Größe"
 HUD_SIZE_AUTO = "Automatisch"
+FONT_SIZE = "Schriftgröße"
 OPACITY = "Deckkraft"
 SHOW_PLAYER_MORALE_TEXT=" Spieler-Moralwert"
 SHOW_PLAYER_POWER = " Spielerstärke anzeigen"

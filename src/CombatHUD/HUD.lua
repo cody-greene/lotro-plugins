@@ -70,7 +70,7 @@ function HUD:Constructor(player, config)
   end
   import("src.CombatHUD.res." .. asset_pack)
   local assets = src.CombatHUD.res[asset_pack]
-  local font_size = assets.font_size
+  local font_size = config.font_size or assets.font_size
   local font_key = assets.font_face .. font_size
   local font = Turbine.UI.Lotro.Font[font_key]
   assert(font ~= nil, string.format("Font does not exist; asset_pack=%s, font=%s", asset_pack, font_key))

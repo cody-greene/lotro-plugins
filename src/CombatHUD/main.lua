@@ -20,6 +20,7 @@ local DATA_KEY = "CombatHUD"
 DefaultConfig = class({
   asset_pack = "auto",
   opacity = 0.90,
+  font_size = 16,
   enable_player_power = true,
   enable_target_power = true,
   enable_player_morale_text = true,
@@ -99,7 +100,7 @@ setup()
 
 -- Event fired when a plugin's main package has finished loading.
 function plugin:Load()
-  Turbine.Shell.WriteLine(pkg.name .. " v" .. pkg.version)
+  Turbine.Shell.WriteLine(pkg.name .. " " .. pkg.version)
 end
 
 -- Event fired before a plugin is unloaded.
@@ -201,6 +202,24 @@ function OptionsPanel:Constructor()
     config:saveAsync()
   end
 
+  local font_size_label = Turbine.UI.Label()
+  font_size_label:SetSize(200, 16)
+  font_size_label:SetFont(Turbine.UI.Lotro.Font.Verdana16)
+  font_size_label:SetText(string.format("%s (%.0f):", t.FONT_SIZE, config.font_size))
+
+  local font_size_slider = Slider(10, 22, 2) -- 10 12 14 16 18 20 22
+  font_size_slider:SetWidth(200)
+  font_size_slider:set_value(config.font_size)
+  font_size_slider.on_change = function(_, value)
+    if value == config.font_size then
+      return -- No meaningful change
+    end
+    font_size_label:SetText(string.format("%s (%.0f):", t.FONT_SIZE, value))
+    config.font_size = value
+    setup()
+    config:saveAsync()
+  end
+
   local opacity_label = Turbine.UI.Label()
   opacity_label:SetSize(200, 16)
   opacity_label:SetFont(Turbine.UI.Lotro.Font.Verdana16)
@@ -247,6 +266,8 @@ function OptionsPanel:Constructor()
   self:add_row(cb_target_power)
   self:add_row(cb_target_power_text)
   self:add_row(cb_target_morale_text)
+  self:add_row(font_size_label)
+  self:add_row(font_size_slider)
   self:add_row(opacity_label)
   self:add_row(opacity_slider)
   self:add_row(size_selector_label, size_selector)

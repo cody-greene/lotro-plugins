@@ -8,14 +8,29 @@ local BUTTON_WIDTH = 5
 local BUTTON_HEIGHT = 8
 local PADDING = 2
 
+local function from_normalized(min, max, step, val)
+  if step == nil then
+    -- continuous mode
+    local actual = (val * (max - min)) + min
+    return actual, val
+  end
+  -- discrete mode
+  local scale = math.ceil((max - min) / step)
+  local index = math.floor(val * scale + 0.5)
+  local actual = index * step + min
+  local snapped = index / scale
+  return actual, snapped
+end
+
 Slider = class(Turbine.UI.Control)
 
-function Slider:Constructor(min_value, max_value)
+function Slider:Constructor(min_value, max_value, step_value)
   Turbine.UI.Control.Constructor(self)
 
   self.drag = false
   self.min_value = min_value or 0
   self.max_value = max_value or 1
+  self.step_value = step_value
   self.normalized_value = self.min_value
 
   local line = Turbine.UI.Button()
@@ -57,9 +72,9 @@ end
 function Slider:update_raw(x)
   local width = self:GetWidth()
   local normalized = math.max(0, math.min(x/width, 1))
-  local actual = (normalized * (self.max_value - self.min_value)) + self.min_value
-  self.button:SetLeft((width - BUTTON_WIDTH) * normalized)
-  self.normalized_value = normalized
+  local actual, snapped = from_normalized(self.min_value, self.max_value, self.step_value, normalized)
+  self.button:SetLeft((width - BUTTON_WIDTH) * snapped)
+  self.normalized_value = snapped
   self:on_change(actual)
 end
 
