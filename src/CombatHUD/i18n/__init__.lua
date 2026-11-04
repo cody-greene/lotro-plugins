@@ -16,11 +16,36 @@ else
 end
 
 
+local SUFFIX_MAP = {
+  {limit = 0, divisor = 0, suffix = ""}, -- 99,999
+  {limit = 1e5, divisor = 1e3, suffix = "k"}, -- 100k - 999.9k
+  {limit = 1e6, divisor = 1e6, suffix = "M"}, -- 1M - 999.9M
+  {limit = 1e9, divisor = 1e9, suffix = "G"},
+}
 local KSUB = "%1" .. KSEP
 local KPTN = "^" .. KSEP
 -- Insert locale appropriate separators to group a number by the thousands.
 -- e.g. 1000 -> "1,000"
 function format_int(val)
-  local str = tostring(math.floor(0.5 + val)) -- rounded
-  return str:reverse():gsub("(%d%d%d)", KSUB):reverse():gsub(KPTN, "")
+  local rounded = math.floor(0.5 + val)
+  local suffix, divisor
+  for _, v in ipairs(SUFFIX_MAP) do
+    if val < v.limit then
+      break
+    end
+    divisor = v.divisor
+    suffix = v.suffix
+  end
+
+  if divisor > 0 then
+    local x = rounded / divisor
+    local fractional = math.floor(x*10%10 + 0.5)
+    if fractional == 10 then
+      -- Carry the one... might need to upgrade the suffix
+      return format_int((math.floor(x) + 1) * divisor)
+    end
+    return math.floor(x) .. DSEP .. fractional .. suffix
+  end
+
+  return tostring(rounded):reverse():gsub("(%d%d%d)", KSUB):reverse():gsub(KPTN, "")
 end

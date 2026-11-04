@@ -11,3 +11,4 @@ SHOW_TARGET_POWER = " Afficher la puissance de la cible"
 SHOW_TARGET_POWER_TEXT=" Valeur de puissance de la cible"
 ALWAYS_SHOW = " Toujours afficher le HUD"
 KSEP = " " -- \u00a0 https://en.wikipedia.org/wiki/Non-breaking_space
+DSEP = ","
